@@ -5,6 +5,8 @@ import Care from './DayCare';
 import axios from 'axios';
 import MapView from 'react-native-maps'
 import Login from './Login'
+import {connect} from 'react-redux'
+
 
 
 class DayCaresList extends Component {
@@ -83,18 +85,23 @@ class DayCaresList extends Component {
          );
     }
 }
-const TabNavigator = createBottomTabNavigator({
-    List: DayCaresList,
-    Register: Care},
-    {
-        tabBarOptions: {
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-          labelStyle: {
-            fontSize: 25,
-          },
-        },
-      });
+    // const mapStateToProps = (state) => {
+
+    //     return{TabConfig: state.TabNavConfig}
+    // }
   
-  
-  export default createAppContainer(TabNavigator);
+    const TabNavigator = createBottomTabNavigator({
+        List: DayCaresList,
+        Register: Care},
+        {
+            tabBarOptions: {
+              activeTintColor: 'tomato',
+              inactiveTintColor: 'gray',
+              labelStyle: {
+                fontSize: 25,
+              },
+            },
+          });
+          
+      
+        export default createAppContainer(TabNavigator);
