@@ -6,6 +6,9 @@ import Login from './src/components/Login'
 import DayCares from './src/components/DayCaresList'
 import Care from './src/components/DayCare'
 import Register from './src/components/Register'
+import reducers from './src/reducers';
+import Provider from 'react-redux';
+import {createStore} from 'redux';
 
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
@@ -20,7 +23,9 @@ const AppNavigator = createStackNavigator({
 class App extends Component {
   render() {
     return (
+      <Provider store={createStore(reducers)}>
      <Login/>
+     </Provider>
     );
   }
 }

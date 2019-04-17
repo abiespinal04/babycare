@@ -4,9 +4,16 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 class DayCare extends Component {
-    state = {  }
+    state = { 
+        name:{name:"abi",age:26}
+     }
+
+    handleInput = () =>{
+        
+    }
     render() { 
 
+        
         const{textStyles,titleStyles,viewStyles,textInputStyles} = styles
         return ( 
 
@@ -29,7 +36,8 @@ class DayCare extends Component {
                 style={textInputStyles}
                 />
                 <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
+                onPressIn={() => this.props.navigation.setParams(this.state.data)}
+                onPressOut={() => this.props.navigation.goBack()}
                 >
                     <Text>Summit</Text>
                 </TouchableOpacity>

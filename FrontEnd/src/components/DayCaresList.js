@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableOpacity, FlatList} from 'react-native';
+import {View, Text,TouchableOpacity,ScrollView, FlatList} from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import Care from './DayCare';
 import axios from 'axios';
@@ -10,7 +10,7 @@ import Login from './Login'
 class DayCaresList extends Component {
     state = { 
         data: null,
-        refreshing:true 
+        
     }
 
     async componentDidMount(){
@@ -30,20 +30,34 @@ class DayCaresList extends Component {
           this.setState({data:datas});
         }
     render() { 
+
+        
         return ( 
-            <View>
+            
+            <View style={{flex:1}}>
+                <ScrollView>
                 <FlatList
                 data={this.state.data}
                 extraData={this.state.refreshing}
                 renderItem={({item}) => 
                 <View>
+                   
                     <Text style={{fontSize:25, fontWeight:'bold'}}>{item.name}
                     </Text>
-                    <Text>Price: {item.price}$</Text>
+                  
+                    <Text>Addres:</Text> 
+                    <TouchableOpacity>
+                    <Text>{item.location}</Text>
+                    </TouchableOpacity>
+                    <Text>Phone:</Text>
+                    <TouchableOpacity>
+                    <Text>{item.telephone}</Text>
+                    </TouchableOpacity>
                 </View>}
                 keyExtractor={item => item._id }
                 
                 />
+                </ScrollView>
                 {/* <View style={{alignSelf:'center'}}>
                 <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Care')}
@@ -63,6 +77,9 @@ class DayCaresList extends Component {
     //     }}
     //     showsUserLocation={true}
     //   />
+
+
+
          );
     }
 }
