@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {View, Text,TouchableOpacity, FlatList} from 'react-native';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import Care from './DayCare';
 import axios from 'axios';
 import MapView from 'react-native-maps'
+import Login from './Login'
 
 
-class DayCares extends Component {
+class DayCaresList extends Component {
     state = { 
         data: null,
         refreshing:true 
@@ -41,14 +44,14 @@ class DayCares extends Component {
                 keyExtractor={item => item._id }
                 
                 />
-                <View style={{alignSelf:'center'}}>
+                {/* <View style={{alignSelf:'center'}}>
                 <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('Care')}
                 style={{borderColor:'#47CAFF',borderBottomWidth:1,borderTopWidth:1}}
                 >
                 <Text style={{fontSize:25}}>+ Daycare</Text>
                 </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
     //         <MapView
     //     style={{flex: 1}}
@@ -63,5 +66,18 @@ class DayCares extends Component {
          );
     }
 }
- 
-export default DayCares;
+const TabNavigator = createBottomTabNavigator({
+    List: DayCaresList,
+    Register: Care},
+    {
+        tabBarOptions: {
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+          labelStyle: {
+            fontSize: 25,
+          },
+        },
+      });
+  
+  
+  export default createAppContainer(TabNavigator);
