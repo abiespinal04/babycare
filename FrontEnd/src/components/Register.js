@@ -22,9 +22,14 @@ class Register extends Component {
                 placeholder='Last Name'
                 style={{fontSize:20,paddingBottom:10}}
                 />
-                 <Text style={{fontSize:20,fontWeight:'bold'}}>Email</Text>
+                 <Text style={{fontSize:20,fontWeight:'bold'}}>Email Address</Text>
                  <TextInput
                 placeholder='email'
+                style={{fontSize:20,paddingBottom:10}}
+                />
+                 <Text style={{fontSize:20,fontWeight:'bold'}}>Password</Text>
+                 <TextInput
+                placeholder='password'
                 style={{fontSize:20,paddingBottom:10}}
                 />
             </View>

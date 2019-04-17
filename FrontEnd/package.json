@@ -8,6 +8,8 @@
     "xcode": "open ./ios/babycare.xcodeproj"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.6",
     "express": "^4.16.4",
     "react": "16.8.3",
     "react-native": "0.59.4",

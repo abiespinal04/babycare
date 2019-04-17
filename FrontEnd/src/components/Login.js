@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {TextInput,Text,View,TouchableOpacity,Image} from 'react-native';
+import axios from 'axios';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 
+
 class Login extends Component {
-    state = {  }
+    state = {}
 
 
     static navigationOptions = {
@@ -17,6 +19,9 @@ class Login extends Component {
           fontWeight: 'bold',
         },
       };
+
+    
+
     render() { 
         return ( 
 
@@ -37,7 +42,9 @@ class Login extends Component {
                 <View style={{flexDirection:'row'}}>
                 <TouchableOpacity 
                 style={{paddingRight:35}}
-                onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
+                // onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
+                // onPress={() => this.handleTest}
+                onPress={() => this.props.navigation.navigate('DayCares')}
                 >
                     <Text style={{fontSize:20, fontWeight:'bold'}}>
                         Login
@@ -51,7 +58,10 @@ class Login extends Component {
                         Register
                     </Text>
                 </TouchableOpacity>
+               
+                  
                 </View>
+            
             </View>
 
          );
