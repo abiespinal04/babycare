@@ -45,7 +45,7 @@ class Login extends Component {
                 style={{paddingRight:35}}
                 // onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
                 // onPress={() => this.handleTest}
-                onPress={() => this.props.navigation.navigate('DayCares')}
+                onPress={() => this.props.navigation.navigate('TabNav')}
                 >
                     <Text style={{fontSize:20, fontWeight:'bold'}}>
                         Login

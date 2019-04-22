@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import {TextInput,Text,View} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
+import axios from 'axios'
 import * as actions from '../actions'
 
 
 
 class DayCare extends Component {
     state = { 
-       daycare:'',
-       location:'',
-       telephone: ''
+        name:'',
+        location:'',
+        telephone: ''
      }
+
 
     handleDaycare = (daycare) => {
         let newDaycare = this.state.daycare;
         newDaycare = daycare
-        this.setState({daycare:newDaycare});
+        this.setState({name:newDaycare});
     }
 
     handleLocation = (location) => {
@@ -31,8 +33,13 @@ class DayCare extends Component {
         this.setState({telephone:newTelephone});
     }
 
-    handleRegistration = () => {
+    handleRegistration = async () => {
        
+        // const {Daycare} = this.props
+        // console.log(Daycare)
+      //   console.log(this.props.TabConfig)
+        const{data} = await axios.post("http://localhost:3000/products", this.state)
+   
         this.props.addDaycare(this.state)
     }
 
@@ -65,7 +72,7 @@ class DayCare extends Component {
                 onChangeText={(telephone)=> this.handleTelephone(telephone)}
                 />
                 <TouchableOpacity
-                onPressIn={() => this.handleRegistration()}
+                onPress={() => this.handleRegistration()}
                 onPressOut={() => this.props.navigation.goBack()}
                 >
                     <Text>Summit</Text>
@@ -80,7 +87,9 @@ const styles = {
     textInputStyles:{
         paddingTop: 5,
         paddingBottom: 5,
-        width:100
+        width:100,
+        borderColor: '#47CAFF',
+        borderBottomWidth: 3
     },
     titleStyles : {
         fontSize:40,

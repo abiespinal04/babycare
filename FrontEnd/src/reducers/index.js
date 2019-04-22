@@ -5,5 +5,4 @@ import TabConfigReducer from './TabConfigReducer'
 
 export default combineReducers({
     Daycare: AddDaycareReducer,
-    // TabNavConfig : TabConfigReducer
 });

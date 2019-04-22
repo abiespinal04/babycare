@@ -1,13 +1,14 @@
 
 
 import React, {Component} from 'react';
-
+import {TextinText, View} from 'react-native';
 import Login from './src/components/Login'
-import DayCares from './src/components/DayCaresList'
+import DayCaresList from './src/components/DayCaresList'
 import Care from './src/components/DayCare'
 import Register from './src/components/Register'
 import reducers from './src/reducers';
 import {Provider} from 'react-redux';
+import TabNav from './src/components/Tabbar'
 import {createStore} from 'redux';
 
 import {createAppContainer,createStackNavigator} from 'react-navigation'
@@ -16,7 +17,8 @@ import {createAppContainer,createStackNavigator} from 'react-navigation'
 
 const AppNavigator = createStackNavigator({
     Login:Login,
-    DayCares:DayCares,
+    DayCares:DayCaresList,
+    TabNav: TabNav,
     Register:Register,
     Care: Care
   });

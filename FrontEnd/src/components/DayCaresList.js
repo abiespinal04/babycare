@@ -5,6 +5,7 @@ import Care from './DayCare';
 import axios from 'axios';
 import MapView from 'react-native-maps'
 import Login from './Login'
+import Tabbar from './Tabbar';
 import {connect} from 'react-redux'
 
 
@@ -18,21 +19,28 @@ class DayCaresList extends Component {
     async componentDidMount(){
 
         const {data} = await axios.get("http://localhost:3000/products");
-        console.log(data)
+        // console.log(data)
         return this.setState({data})
       }
 
-    //   componentDidUpdate(){
-    //       this.state({data:this.state.data})
+    //   async componentDidUpdate(){
+    //     const {data} = await axios.get("http://localhost:3000/products");
+    //     // console.log(data)
+    //     return this.setState({data})
     //   }
-      addDayCare = async() => {
-          const obj = {name: 'Abimael Book', price: 100}
-          const{data} = await axios.post("http://localhost:3000/products", obj)
-          const datas = [...this.state.data,data]
-          this.setState({data:datas});
-        }
-    render() { 
+ 
 
+    
+    //   addDayCare = async() => {
+    //       const {Daycare} = this.props
+    //       console.log(Daycare)
+    //     //   console.log(this.props.TabConfig)
+    //       const{data} = await axios.post("http://localhost:3000/products", Daycare)
+    //       const datas = [...this.state.data,data]
+    //       this.setState({data:datas});
+    //     }
+    render() { 
+       
         
         return ( 
             
@@ -40,7 +48,7 @@ class DayCaresList extends Component {
                 <ScrollView>
                 <FlatList
                 data={this.state.data}
-                extraData={this.state.refreshing}
+                extraData={this.state}
                 renderItem={({item}) => 
                 <View>
                    
@@ -62,13 +70,16 @@ class DayCaresList extends Component {
                 </ScrollView>
                 {/* <View style={{alignSelf:'center'}}>
                 <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Care')}
+                onPressIn ={() => this.addDayCare()}
+                onPressOut={() => this.props.navigation.navigate('Care')}
                 style={{borderColor:'#47CAFF',borderBottomWidth:1,borderTopWidth:1}}
                 >
                 <Text style={{fontSize:25}}>+ Daycare</Text>
                 </TouchableOpacity>
                 </View> */}
+               
             </View>
+
     //         <MapView
     //     style={{flex: 1}}
     //     region={{
@@ -85,23 +96,12 @@ class DayCaresList extends Component {
          );
     }
 }
-    // const mapStateToProps = (state) => {
-
-    //     return{TabConfig: state.TabNavConfig}
-    // }
+    const mapStateToProps = (state) => {
+        console.log("Test",state.Daycare);
+        return{Daycare: state.Daycare}
+    }
   
-    const TabNavigator = createBottomTabNavigator({
-        List: DayCaresList,
-        Register: Care},
-        {
-            tabBarOptions: {
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
-              labelStyle: {
-                fontSize: 25,
-              },
-            },
-          });
-          
-      
-        export default createAppContainer(TabNavigator);
+
+    export default connect(mapStateToProps)(DayCaresList)
+
+   
