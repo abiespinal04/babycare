@@ -7,6 +7,7 @@ import Login from './Login'
 
 class TabNav extends Component {
   state = {  }
+
   render() { 
     return ( 
     <DayCaresList/>
@@ -26,9 +27,7 @@ class TabNav extends Component {
                 fontSize: 25,
               },
             },
-            navigationOptions:{
-                
-            }
+            
           });
           
         //   const tab = createAppContainer(TabNavigator);

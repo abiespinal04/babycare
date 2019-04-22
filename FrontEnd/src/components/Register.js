@@ -7,10 +7,23 @@ import Card from './common/Card'
 
 class Register extends Component {
     state = {  }
+
+    static navigationOptions = {
+        title:'Register',
+        headerStyle: {
+          backgroundColor: '#47CAFF',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      };
+    
     render() { 
         return ( 
             
             <Card>
+   
             <View style={{alignSelf:'center',paddingTop:60}}>
                <Text style={{fontSize:20,fontWeight:'bold'}}>FirstName</Text>
                 <TextInput 

@@ -7,6 +7,8 @@ import MapView from 'react-native-maps'
 import Login from './Login'
 import Tabbar from './Tabbar';
 import {connect} from 'react-redux'
+import Card from './common/Card'
+import CardSection from './common/CardSection'
 
 
 
@@ -15,6 +17,7 @@ class DayCaresList extends Component {
         data: null,
         
     }
+
 
     async componentDidMount(){
 
@@ -51,10 +54,12 @@ class DayCaresList extends Component {
                 extraData={this.state}
                 renderItem={({item}) => 
                 <View>
-                   
-                    <Text style={{fontSize:25, fontWeight:'bold'}}>{item.name}
+                   <Card>
+                       <CardSection>
+                    <Text style={{fontSize:25, fontFamily:'Baskerville-Bold' ,fontWeight:'bold'}}>{item.name}
                     </Text>
-                  
+                    </CardSection>
+
                     <Text>Addres:</Text> 
                     <TouchableOpacity>
                     <Text>{item.location}</Text>
@@ -63,6 +68,7 @@ class DayCaresList extends Component {
                     <TouchableOpacity>
                     <Text>{item.telephone}</Text>
                     </TouchableOpacity>
+                    </Card>
                 </View>}
                 keyExtractor={item => item._id }
                 

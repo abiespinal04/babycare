@@ -4,7 +4,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
 import axios from 'axios'
 import * as actions from '../actions'
-
+import Button from './common/Button'
+import Card from './common/Card'
+import CardSection from './common/CardSection'
 
 
 class DayCare extends Component {
@@ -39,43 +41,59 @@ class DayCare extends Component {
         // console.log(Daycare)
       //   console.log(this.props.TabConfig)
         const{data} = await axios.post("http://localhost:3000/products", this.state)
-   
-        this.props.addDaycare(this.state)
+        // const {d} =await axios.get("http://localhost:3000/products")
+      console.log(data)
+       
+    }
+   async componentDidMount(){
+    const{data} = await axios.get("http://localhost:3000/products")
+    this.props.addDaycare(data)
     }
 
-
+    
     render() { 
 
         
-        const{textStyles,titleStyles,viewStyles,textInputStyles} = styles
+        const{buttonTextStyle,buttonStyle,textStyles,titleStyles,viewStyles,textInputStyles} = styles
         return ( 
 
-            <View>
+            <View style={{flex:1}}>
             <View style={viewStyles}>
-                
+                <Card>
+                <CardSection>
                 <Text style={titleStyles}>Register Daycare</Text>
+                </CardSection>
+                </Card>
             </View>
             <View style={viewStyles}>
+           
             <TextInput
                 placeholder="Daycare Name"
                 style={textInputStyles}
                 onChangeText={(daycare)=> this.handleDaycare(daycare)}
                 />
+          
+          
                  <TextInput
                 placeholder="Location"
                 style={textInputStyles}
                 onChangeText={(location)=> this.handleLocation(location)}
                 />
+              
+
+               
                  <TextInput
                 placeholder="Telephone"
                 style={textInputStyles}
                 onChangeText={(telephone)=> this.handleTelephone(telephone)}
                 />
+             
                 <TouchableOpacity
                 onPress={() => this.handleRegistration()}
                 onPressOut={() => this.props.navigation.goBack()}
-                >
-                    <Text>Summit</Text>
+                style={buttonStyle}
+           >
+                    <Text style={buttonTextStyle}>Summit</Text>
                 </TouchableOpacity>
                 </View>
               </View>
@@ -85,18 +103,43 @@ class DayCare extends Component {
  
 const styles = {
     textInputStyles:{
-        paddingTop: 5,
-        paddingBottom: 5,
-        width:100,
-        borderColor: '#47CAFF',
-        borderBottomWidth: 3
+        color: '#000',
+        paddingRight: 5,
+        paddingLeft: 5,
+        fontSize: 18,
+        lineHeight: 23,
+        width:130,
+        height:30
+        // borderColor: '#47CAFF',
+        // borderBottomWidth: 3
     },
     titleStyles : {
         fontSize:40,
-        fontWeight:'bold'
+        fontWeight:'bold',
+    
+    },
+    buttonTextStyle:{
+        alignSelf: 'center',
+        color: '#007aff',
+        fontSize: 16,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10
+      
+    },
+    buttonStyle:{
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#007aff',
+        marginLeft: 5,
+        marginRight: 5
+      
     },
     viewStyles :{
-        alignSelf:'center'
+        alignSelf:'center',
+        
     }
 }
 

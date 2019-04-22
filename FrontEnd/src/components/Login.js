@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {TextInput,Text,View,TouchableOpacity,Image} from 'react-native';
 import axios from 'axios';
+import Button from './common/Button'
 
-import { createStackNavigator, createAppContainer } from "react-navigation";
 
 
 
@@ -11,7 +11,7 @@ class Login extends Component {
 
 
     static navigationOptions = {
-        title: 'Home',
+        title: 'Login',
         headerStyle: {
           backgroundColor: '#47CAFF',
         },
@@ -37,6 +37,7 @@ class Login extends Component {
                 style={{fontSize:40}}
                 />
                   <TextInput
+                  secureTextEntry={true}
                 placeholder="Password"
                 style={{fontSize:40}}
                 />
