@@ -10,7 +10,7 @@ class TabNav extends Component {
 
   render() { 
     return ( 
-    <DayCaresList/>
+    <DayCaresList navigation={this.props.navigation}/>
      );
   }
 }

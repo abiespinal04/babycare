@@ -9,6 +9,7 @@ import Tabbar from './Tabbar';
 import {connect} from 'react-redux'
 import Card from './common/Card'
 import CardSection from './common/CardSection'
+import MapAddress from './MapAddress';
 
 
 
@@ -42,6 +43,8 @@ class DayCaresList extends Component {
     //       const datas = [...this.state.data,data]
     //       this.setState({data:datas});
     //     }
+
+   
     render() { 
        
         
@@ -56,14 +59,28 @@ class DayCaresList extends Component {
                 <View>
                    <Card>
                        <CardSection>
+                       <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate('MapAddress',{
+                        newItem:item
+                      })}
+                    >
                     <Text style={{fontSize:25, fontFamily:'Baskerville-Bold' ,fontWeight:'bold'}}>{item.name}
                     </Text>
+                    </TouchableOpacity>
                     </CardSection>
 
                     <Text>Addres:</Text> 
-                    <TouchableOpacity>
+                  
+                    <TouchableOpacity
+                    //   onPress={() => this.props.navigation.navigate('MapAddress',{
+                    //     newItem:item
+                        
+                    //   })}
+                    >
                     <Text>{item.location}</Text>
+       
                     </TouchableOpacity>
+                   
                     <Text>Phone:</Text>
                     <TouchableOpacity>
                     <Text>{item.telephone}</Text>
