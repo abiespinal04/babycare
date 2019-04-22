@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import {View,Text} from 'react-native';
 
 
-class MapAddress extends Component {
+class DatailScren extends Component {
     state = {  }
+
+    static navigationOptions = {
+        title: 'Details',
+        headerStyle: {
+          backgroundColor: '#47CAFF',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      };
+
     render() { 
 
     const { navigation } = this.props;
@@ -27,4 +39,4 @@ class MapAddress extends Component {
     }
 }
  
-export default MapAddress;
+export default DatailScren;

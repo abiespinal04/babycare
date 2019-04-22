@@ -9,7 +9,8 @@ import Register from './src/components/Register'
 import reducers from './src/reducers';
 import {Provider} from 'react-redux';
 import TabNav from './src/components/Tabbar'
-import MapAddress from './src/components/MapAddress'
+import DatailScren from './src/components/DetailScreen'
+import GeoLocation from './src/components/GeoLocation'
 import {createStore} from 'redux';
 
 import {createAppContainer,createStackNavigator} from 'react-navigation'
@@ -22,7 +23,8 @@ const AppNavigator = createStackNavigator({
     TabNav: TabNav,
     Register:Register,
     Care: Care,
-    MapAddress:MapAddress
+    DatailScren:DatailScren,
+    GeoLocation: GeoLocation
   });
 
 const AppContainer = createAppContainer(AppNavigator);
