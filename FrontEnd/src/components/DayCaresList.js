@@ -9,14 +9,15 @@ import Tabbar from './Tabbar';
 import {connect} from 'react-redux'
 import Card from './common/Card'
 import CardSection from './common/CardSection'
-import MapAddress from './MapAddress';
+import MapAddress from './DetailScreen';
+import {Linking} from 'react-native'
 
 
 
 class DayCaresList extends Component {
     state = { 
         data: null,
-        
+        location: 'NO-LOCATION'
     }
 
 
@@ -44,7 +45,23 @@ class DayCaresList extends Component {
     //       this.setState({data:datas});
     //     }
 
+//    handleCall = (phoneNumber)=> {
+//     Linking.openURL(`tel:${phoneNumber}`)
+// };
    
+      handleGeo = () => {
+                           
+            navigator.geolocation.getCurrentPosition(
+              position => {
+                const location = JSON.stringify(position);
+                console.log(location)
+                this.setState({ location });
+              },
+              error => Alert.alert(error.message),
+              { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+            );
+      }
+
     render() { 
        
         
@@ -60,7 +77,7 @@ class DayCaresList extends Component {
                    <Card>
                        <CardSection>
                        <TouchableOpacity
-                      onPress={() => this.props.navigation.navigate('MapAddress',{
+                      onPress={() => this.props.navigation.navigate('DatailScren',{
                         newItem:item
                       })}
                     >
@@ -72,17 +89,21 @@ class DayCaresList extends Component {
                     <Text>Addres:</Text> 
                   
                     <TouchableOpacity
-                    //   onPress={() => this.props.navigation.navigate('MapAddress',{
-                    //     newItem:item
-                        
-                    //   })}
+                    onPressIn={()=> this.handleGeo()}
+                      onPress={() => this.props.navigation.navigate('GeoLocation',
+                      {
+                        newItem:item,
+                        location: this.state.location
+                      })}
                     >
                     <Text>{item.location}</Text>
        
                     </TouchableOpacity>
                    
                     <Text>Phone:</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                    // onPress={() => this.handleCall(item.telephone)}
+                    >
                     <Text>{item.telephone}</Text>
                     </TouchableOpacity>
                     </Card>
