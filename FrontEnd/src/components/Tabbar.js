@@ -9,6 +9,8 @@ import Login from './Login'
 class TabNav extends Component {
   state = {  }
 
+  
+
   render() { 
     return ( 
     <DayCaresList navigation={this.props.navigation}/>
@@ -27,7 +29,9 @@ class TabNav extends Component {
               labelStyle: {
                 fontSize: 25,
               },
+              
             },
+           
             
           });
           

@@ -7,7 +7,10 @@ import Button from './common/Button'
 
 
 class Login extends Component {
-    state = {}
+    state = {
+        userName: '',
+        password: ''
+    }
 
 
     static navigationOptions = {
@@ -35,31 +38,37 @@ class Login extends Component {
                 <TextInput
                 placeholder="Username"
                 style={{fontSize:40}}
+                onChangeText={(userName) => this.setState({userName:userName})}
+                value={this.state.userName}
                 />
                   <TextInput
                   secureTextEntry={true}
                 placeholder="Password"
+                onChangeText={(password)=> this.setState({password})}
+                value={this.state.password}
                 style={{fontSize:40}}
                 />
                 <View style={{flexDirection:'row'}}>
-                <TouchableOpacity 
+                <Button
                 style={{paddingRight:35}}
                 // onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
                 // onPress={() => this.handleTest}
+                // onPressOut={() => this.setState({userName:''})}
                 onPress={() => this.props.navigation.navigate('TabNav')}
+
                 >
-                    <Text style={{fontSize:20, fontWeight:'bold'}}>
+                    
                         Login
-                    </Text>
+                    
           
-                </TouchableOpacity>
-                <TouchableOpacity
+                </Button> 
+                <Button
                   onPress={() => this.props.navigation.navigate('Register')}
                 >
-                <Text style={{fontSize:20, fontWeight:'bold'}}>
+                
                         Register
-                    </Text>
-                </TouchableOpacity>
+                 
+                </Button>
                
                   
                 </View>
