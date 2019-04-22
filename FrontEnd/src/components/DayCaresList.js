@@ -14,6 +14,7 @@ import {Linking} from 'react-native'
 
 
 
+
 class DayCaresList extends Component {
     state = { 
         data: null,
