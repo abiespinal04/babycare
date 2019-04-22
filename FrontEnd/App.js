@@ -9,7 +9,7 @@ import Register from './src/components/Register'
 import reducers from './src/reducers';
 import {Provider} from 'react-redux';
 import TabNav from './src/components/Tabbar'
-import DatailScren from './src/components/DetailScreen'
+import DatailScreen from './src/components/DetailScreen'
 import GeoLocation from './src/components/GeoLocation'
 import {createStore} from 'redux';
 
@@ -20,10 +20,21 @@ import {createAppContainer,createStackNavigator} from 'react-navigation'
 const AppNavigator = createStackNavigator({
     Login:Login,
     DayCares:DayCaresList,
-    TabNav: TabNav,
+    TabNav:{screen:TabNav,
+      navigationOptions: {
+        title: 'Home',
+        headerLeft: null, headerStyle: {
+          backgroundColor: '#47CAFF',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }
+    }, 
     Register:Register,
     Care: Care,
-    DatailScren:DatailScren,
+    DatailScren:DatailScreen,
     GeoLocation: GeoLocation
   });
 

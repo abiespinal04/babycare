@@ -67,26 +67,27 @@ class DayCaresList extends Component {
         
         return ( 
             
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor:'#e9e9ef'}}>
                 <ScrollView>
                 <FlatList
                 data={this.state.data}
                 extraData={this.state}
                 renderItem={({item}) => 
                 <View>
-                   <Card>
+                    <Card>
+                   <View style={styles.containerStyle}>
                        <CardSection>
                        <TouchableOpacity
                       onPress={() => this.props.navigation.navigate('DatailScren',{
                         newItem:item
                       })}
                     >
-                    <Text style={{fontSize:25, fontFamily:'Baskerville-Bold' ,fontWeight:'bold'}}>{item.name}
+                    <Text style={styles.titleStyles}>{item.name}
                     </Text>
                     </TouchableOpacity>
                     </CardSection>
-
-                    <Text>Addres:</Text> 
+                    </View>
+                    <Text style={styles.textStyles}>Addres:</Text> 
                   
                     <TouchableOpacity
                     onPressIn={()=> this.handleGeo()}
@@ -96,15 +97,15 @@ class DayCaresList extends Component {
                         location: this.state.location
                       })}
                     >
-                    <Text>{item.location}</Text>
+                    <Text  style={styles.textStyles}>{item.location}</Text>
        
                     </TouchableOpacity>
                    
-                    <Text>Phone:</Text>
+                    <Text  style={styles.textStyles}>Phone:</Text>
                     <TouchableOpacity
                     // onPress={() => this.handleCall(item.telephone)}
                     >
-                    <Text>{item.telephone}</Text>
+                    <Text style={styles.textStyles}>{item.telephone}</Text>
                     </TouchableOpacity>
                     </Card>
                 </View>}
@@ -145,6 +146,36 @@ class DayCaresList extends Component {
         return{Daycare: state.Daycare}
     }
   
+    const styles ={
+        titleStyles:{
+            // textShadowColor: '#222',
+            // textShadowOffset: { width: 1, height: 1 },
+            // textShadowRadius: 1,
+            fontSize:25, 
+            fontFamily:'Baskerville-Bold',
+            fontWeight:'bold'
+        },
+        containerStyle: {
+            borderWidth: 1,
+            borderRadius: 2,
+            borderColor: '#ddd',
+            borderBottomWidth: 1,
+            shadowColor: '#000',
+            shadowOffset: { width: 2, height: 2 },
+            shadowOpacity: 1,
+            shadowRadius: 2,
+            elevation: 1,
+            marginLeft: 5,
+            marginRight: 5,
+            marginTop: 10,
+        },
+        textStyles:{
+            fontFamily:'Baskerville-SemiBold',
+            fontSize:20,
+       
+            paddingLeft:10
+        }
+    }
 
     export default connect(mapStateToProps)(DayCaresList)
 
