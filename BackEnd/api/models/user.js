@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
         unique:true,
         match: /.+@(gmail|yahoo|hotmail|outlook)\.com$/
     },
-    password: {type:String, required: true}
+    password: {type:String, required: true,type:String, required: true}
 
 })
 
