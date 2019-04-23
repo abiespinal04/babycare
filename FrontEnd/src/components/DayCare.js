@@ -57,13 +57,13 @@ class DayCare extends Component {
         const{buttonTextStyle,buttonStyle,textStyles,titleStyles,viewStyles,textInputStyles} = styles
         return ( 
 
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor:'#e9e9ef'}}>
             <View style={viewStyles}>
-                <Card>
+               {/* <View style={styles.containerStyle}>
                 <CardSection>
                 <Text style={titleStyles}>Register Daycare</Text>
                 </CardSection>
-                </Card>
+                </View> */}
             </View>
             <View style={viewStyles}>
            
@@ -120,7 +120,7 @@ const styles = {
     },
     buttonTextStyle:{
         alignSelf: 'center',
-        color: '#007aff',
+        color: '#47CAFF',
         fontSize: 16,
         fontWeight: '600',
         paddingTop: 10,
@@ -132,10 +132,23 @@ const styles = {
         backgroundColor: '#fff',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#007aff',
+        borderColor: '#47CAFF',
         marginLeft: 5,
         marginRight: 5
       
+    },containerStyle: {
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#ddd',
+        borderBottomWidth: 1,
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 2,
+        elevation: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
     },
     viewStyles :{
         alignSelf:'center',

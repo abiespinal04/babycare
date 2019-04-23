@@ -1,7 +1,7 @@
 
 
 import React, {Component} from 'react';
-import {TextinText, View} from 'react-native';
+import {TextinText, Text,View} from 'react-native';
 import Login from './src/components/Login'
 import DayCaresList from './src/components/DayCaresList'
 import Care from './src/components/DayCare'
@@ -23,7 +23,9 @@ const AppNavigator = createStackNavigator({
     TabNav:{screen:TabNav,
       navigationOptions: {
         title: 'Home',
-        headerLeft: null, headerStyle: {
+        headerLeft: null,
+        headerRight: <Text>'hello'</Text>,
+        headerStyle: {
           backgroundColor: '#47CAFF',
         },
         headerTintColor: '#fff',

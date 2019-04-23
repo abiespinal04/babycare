@@ -4,7 +4,7 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import DayCaresList from './DayCaresList';
 import Care from './DayCare'
 
-import Login from './Login'
+import DrawerNav from './DrawerNav'
 
 class TabNav extends Component {
   state = {  }
@@ -13,7 +13,9 @@ class TabNav extends Component {
 
   render() { 
     return ( 
+   
     <DayCaresList navigation={this.props.navigation}/>
+   
      );
   }
 }
@@ -24,8 +26,8 @@ class TabNav extends Component {
         {
             
             tabBarOptions: {
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
+              activeTintColor: 'lightblue',
+              inactiveTintColor: 'black',
               labelStyle: {
                 fontSize: 25,
               },
