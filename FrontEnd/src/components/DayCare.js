@@ -9,7 +9,7 @@ import Card from './common/Card'
 import CardSection from './common/CardSection'
 
 
-class DayCare extends Component {
+class DayCare extends Component { 
     state = { 
         name:'',
         location:'',
@@ -17,17 +17,9 @@ class DayCare extends Component {
      }
 
 
-    handleDaycare = (daycare) => {
-        let newDaycare = this.state.daycare;
-        newDaycare = daycare
-        this.setState({name:newDaycare});
-    }
+   
 
-    handleLocation = (location) => {
-        let newLocation = this.state.location;
-        newLocation = location
-        this.setState({location:newLocation});
-    }
+  
 
     handleTelephone = (telephone) => {
         let newTelephone = this.state.telephone;
@@ -42,13 +34,15 @@ class DayCare extends Component {
       //   console.log(this.props.TabConfig)
         const{data} = await axios.post("http://localhost:3000/products", this.state)
         // const {d} =await axios.get("http://localhost:3000/products")
-      console.log(data)
+        const daycare = data.createdProduct
+            this.props.addDaycare(daycare);
+            
        
     }
-   async componentDidMount(){
-    const{data} = await axios.get("http://localhost:3000/products")
-    this.props.addDaycare(data)
-    }
+//    async componentDidMount(){
+//     const{data} = await axios.get("http://localhost:3000/products")
+//     this.props.addDaycare(data)
+//     }
 
     
     render() { 
@@ -70,14 +64,14 @@ class DayCare extends Component {
             <TextInput
                 placeholder="Daycare Name"
                 style={textInputStyles}
-                onChangeText={(daycare)=> this.handleDaycare(daycare)}
+                onChangeText={name => this.setState({name})}
                 />
           
           
                  <TextInput
                 placeholder="Location"
                 style={textInputStyles}
-                onChangeText={(location)=> this.handleLocation(location)}
+                onChangeText={location => this.setState({location})}
                 />
               
 
@@ -85,7 +79,7 @@ class DayCare extends Component {
                  <TextInput
                 placeholder="Telephone"
                 style={textInputStyles}
-                onChangeText={(telephone)=> this.handleTelephone(telephone)}
+                onChangeText={telephone=> this.setState({telephone})}
                 />
              
                 <TouchableOpacity
@@ -158,7 +152,7 @@ const styles = {
 
 const mapStateToProps = (state) =>{
 
-    return{Daycare:{}}
+    return{Daycare:state.Daycare}
 }
 
 export default connect(mapStateToProps,actions)(DayCare);

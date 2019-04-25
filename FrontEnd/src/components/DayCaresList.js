@@ -25,27 +25,18 @@ class DayCaresList extends Component {
     async componentDidMount(){
 
         const {data} = await axios.get("http://localhost:3000/products");
-        // console.log(data)
-        return this.setState({data})
+        //  console.log("ComponentDiMount",data)
+        const newData = [...data]
+        return this.setState({data:newData})
       }
-
-    //   async componentDidUpdate(){
-    //     const {data} = await axios.get("http://localhost:3000/products");
-    //     // console.log(data)
-    //     return this.setState({data})
-    //   }
- 
-
     
-    //   addDayCare = async() => {
-    //       const {Daycare} = this.props
-    //       console.log(Daycare)
-    //     //   console.log(this.props.TabConfig)
-    //       const{data} = await axios.post("http://localhost:3000/products", Daycare)
-    //       const datas = [...this.state.data,data]
-    //       this.setState({data:datas});
-    //     }
-
+     async UNSAFE_componentWillUpdate(){
+        const {data} = await axios.get("http://localhost:3000/products");
+        // console.log("ComponentDiMount",data)
+       const newData = [...data]
+       return this.setState({data:newData})
+      }
+     
 //    handleCall = (phoneNumber)=> {
 //     Linking.openURL(`tel:${phoneNumber}`)
 // };
