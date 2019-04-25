@@ -30,7 +30,7 @@ class DayCaresList extends Component {
         return this.setState({data:newData})
       }
     
-     async UNSAFE_componentWillUpdate(){
+     async componentWillUpdate(){
         const {data} = await axios.get("http://localhost:3000/products");
         // console.log("ComponentDiMount",data)
        const newData = [...data]

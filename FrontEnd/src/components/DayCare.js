@@ -36,6 +36,7 @@ class DayCare extends Component {
         // const {d} =await axios.get("http://localhost:3000/products")
         const daycare = data.createdProduct
             this.props.addDaycare(daycare);
+            this.setState({name:'',location:'',telephone:''})
             
        
     }
@@ -65,6 +66,7 @@ class DayCare extends Component {
                 placeholder="Daycare Name"
                 style={textInputStyles}
                 onChangeText={name => this.setState({name})}
+                value={this.state.name}
                 />
           
           
@@ -72,6 +74,7 @@ class DayCare extends Component {
                 placeholder="Location"
                 style={textInputStyles}
                 onChangeText={location => this.setState({location})}
+                value={this.state.location}
                 />
               
 
@@ -80,6 +83,7 @@ class DayCare extends Component {
                 placeholder="Telephone"
                 style={textInputStyles}
                 onChangeText={telephone=> this.setState({telephone})}
+                value={this.state.telephone}
                 />
              
                 <TouchableOpacity

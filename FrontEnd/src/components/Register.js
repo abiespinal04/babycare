@@ -32,7 +32,7 @@ class Register extends Component {
         const{data} = await axios.post("http://localhost:3000/user/signup", this.state)
         console.log(data)
         if(data.message === "User created"){
-          this.props.navigation.navigate('TabNav')
+          this.props.navigation.navigate('Login')
         } else if( data.message === "Email exists"){
             console.log("Email exists")
         }

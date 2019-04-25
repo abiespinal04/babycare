@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextInput,Text,View,TouchableOpacity,Image} from 'react-native';
+import {Modal,TextInput,Text,View,TouchableOpacity,Image} from 'react-native';
 import axios from 'axios';
 import Button from './common/Button'
 import Card from './common/Card'
@@ -10,8 +10,8 @@ import CardSection from './common/CardSection'
 
 class Login extends Component {
     state = {
-        userName: '',
-        password: ''
+      email: '',
+      password:''
     }
 
 
@@ -26,7 +26,18 @@ class Login extends Component {
         },
       };
 
-    
+     handleLogin = async () =>{
+     
+      const{data} = await axios.post("http://localhost:3000/user/login", this.state);
+      console.log("Login")
+      if(data.message === "Auth sucessful"){
+        this.props.navigation.navigate('TabNav')
+        // this.setState({userName:'',password:''})
+      } else {
+
+      }
+     
+    }
 
     render() { 
       const {textInputStyles} = styles 
@@ -42,21 +53,22 @@ class Login extends Component {
              <Card>
                 <CardSection>
                 <TextInput
-                placeholder="Username"
-                style={{fontSize:40}}
-                onChangeText={(userName) => this.setState({userName:userName})}
-                value={this.state.userName}
+                placeholder="Email:anthony123@gmail.com"
+ 
                 style={textInputStyles}
+                onChangeText={email => this.setState({email})}
+                value={this.state.userName}
+               
                 />
                 </CardSection>
                 <CardSection>
                   <TextInput
                   secureTextEntry={true}
                 placeholder="Password"
-                onChangeText={(password)=> this.setState({password})}
-                value={this.state.password}
-                style={{fontSize:40}}
                 style={textInputStyles}
+                onChangeText={password=> this.setState({password})}
+                value={this.state.password}
+        
                 />
                  </CardSection>
             </Card>
@@ -66,8 +78,8 @@ class Login extends Component {
                 // onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
                 // onPress={() => this.handleTest}
                 // onPressOut={() => this.setState({userName:''})}
-                onPress={() => this.props.navigation.navigate('TabNav')}
-
+                onPress={ () => this.handleLogin () }
+             
                 >
                     
                         Login
